@@ -8,7 +8,7 @@ function calculateAndDisplay()
     // Calculate tip, total bill, and amount per person using helper functions
     let tip = calculateTip(bill, serviceQuality)
     let totalBill = calculateTotalBill(bill, tip)
-    let amtPerPers = calculateAmtperPers(bill, numOfPpl)
+    let amtPerPers = calculateAmtPerPers(totalBill, numOfPpl)
 
     // Display the results in the HTML document
     document.getElementById('tipResult').innerText = 'Tip: $' + tip.toFixed(2)
@@ -16,7 +16,27 @@ function calculateAndDisplay()
     document.getElementById('amtPerPersonResult').innerText = 'Amount per person: $' + amtPerPers.toFixed(2)
 }
 
+// Helper Function to calculate Tip based on the bill and service Quality
+function calculateTip(bill, quality){
+    if(quality === 'Great'){
+        return bill * 0.2
+    } else if(quality === 'Good'){
+        return bill * 0.15
+    } else if(quality === 'Poor'){
+        return bill * 0.10
+    } else{
+        return 0
+    }
+}
 
+// Helper Function to calculate total bill by adding the original bill and tip
+function calculateTotalBill(bill, tip){
+    return bill + tip
+}
+
+function calculateAmtPerPers(totalBill, numOfPpl){
+    return totalBill / numOfPpl
+}
 
 
 
